@@ -1,10 +1,16 @@
 import { supabase } from '../../utils/supabaseClient';
 
-export default function singleGame({ results }) {
+export default function singleGame({ results, teamOne }) {
   return (
     <>
       <h1>Single Game</h1>
       <h2>{results.id}</h2>
+      {teamOne.map((game) => (
+        <>
+          <h3>{game.player_name}</h3>
+          <p>{game.fantasy_position}</p>
+        </>
+      ))}
     </>
   );
 }
@@ -61,7 +67,7 @@ export async function getStaticProps({ params }) {
     console.log('teamOne', teamOne);
 
     return {
-      props: { results },
+      props: { results, teamOne },
     };
   } catch (err) {
     console.error(err);

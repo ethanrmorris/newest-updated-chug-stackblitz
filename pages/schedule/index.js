@@ -59,7 +59,7 @@ export default function Schedule({ results }) {
             >
               <MiniBoxScore
                 id={game.id}
-                team={game.owner_id.team}
+                owner={game.owner_id.team}
                 teamOwner={game.owner_id.slug}
                 opponent={game.opponent_id.team}
                 opponentOwner={game.opponent_id.slug}

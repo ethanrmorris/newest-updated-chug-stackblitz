@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 export default function MiniBoxScore({
   id,
-  team,
-  teamOwner,
+  owner,
+  ownerTeam,
+  ownerPoints,
   opponent,
-  opponentOwner,
-  teamPoints,
+  opponentTeam,
   opponentPoints,
 }) {
   return (
@@ -17,37 +17,37 @@ export default function MiniBoxScore({
           <div className="flex flex-col border-r-2 dark:border-[#555555] pr-4">
             <div
               className={`flex justify-between items-center p-4 ${
-                parseInt(teamPoints) > parseInt(opponentPoints)
+                parseInt(ownerPoints) > parseInt(opponentPoints)
                   ? 'font-bold'
                   : null
               }`}
             >
               <div className="flex items-center gap-6">
                 <Image
-                  src={`/logo-${teamOwner}.webp`}
+                  src={`/logo-${ownerTeam}.webp`}
                   width={40}
                   height={40}
-                  alt={`${teamOwner} Logo`}
+                  alt={`${owner} Logo`}
                 />
-                <h3>{team}</h3>
+                <h3>{owner}</h3>
               </div>
               <p className="tabular-nums text-lg">
-                {teamPoints ? teamPoints.toFixed(2) : teamPoints}
+                {ownerPoints ? ownerPoints.toFixed(2) : ownerPoints}
               </p>
             </div>
             <div
               className={`flex justify-between items-center p-4 ${
-                parseInt(teamPoints) < parseInt(opponentPoints)
+                parseInt(ownerPoints) < parseInt(opponentPoints)
                   ? 'font-bold'
                   : null
               }`}
             >
               <div className="flex items-center gap-6">
                 <Image
-                  src={`/logo-${opponentOwner}.webp`}
+                  src={`/logo-${opponentTeam}.webp`}
                   width={40}
                   height={40}
-                  alt={`${opponentOwner} Logo`}
+                  alt={`${opponent} Logo`}
                 />
                 <h3>{opponent}</h3>
               </div>
